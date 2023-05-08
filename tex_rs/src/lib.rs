@@ -1,9 +1,13 @@
 use argh::FromArgs;
 pub mod mkdir;
 
-#[derive(FromArgs)]
+#[derive(FromArgs,Clone)]
 /// Struct to get authour name, title from command line option
 pub struct CmdOpt {
+    /// project name
+    #[argh(positional)] 
+    pub project: Option<String>, 
+
     /// authour name
     #[argh(option, short = 'a' , default = "String::from(\"Authour\")")] 
     pub authour: String,
