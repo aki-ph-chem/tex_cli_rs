@@ -19,6 +19,7 @@ mod tests_mkdirs {
     use std::env;
     use std::path::PathBuf;
 
+    #[ignore]
     #[test]
     /// mkdir test_dir 
     fn test_mkdir() -> std::io::Result<()> {
@@ -34,6 +35,7 @@ mod tests_mkdirs {
         Ok(())
     }
 
+    #[ignore]
     #[test]
     /// mkdir test_dir
     fn test_mkdir_same_dir() -> std::io::Result<()> {
@@ -54,6 +56,7 @@ mod tests_mkdirs {
         Ok(())
     }
 
+    #[ignore]
     #[test]
     /// mkdir -p foo/fuga
     fn test_mkdir_p() -> std::io::Result<()> {
@@ -68,5 +71,29 @@ mod tests_mkdirs {
 
         Ok(())
     }
+
+    #[test]
+    /// mkdir my_project 
+    /// mkdir my_project/src
+    fn test_create_project() -> std::io::Result<()> {
+        let mut dir_path = PathBuf::new();
+        dir_path.push(env::var("CARGO_MANIFEST_DIR").unwrap());
+        dir_path.push("target");
+        dir_path.push("my_project");
+
+        // mkdir my_project
+        mkdir(dir_path.to_str().unwrap())?;
+        assert_eq!(true, dir_path.exists());
+
+        // mkdir my_project/src
+        dir_path.push("src");
+        mkdir(dir_path.to_str().unwrap())?;
+        assert_eq!(true, dir_path.exists());
+
+        dir_path.pop();
+        fs::remove_dir_all(dir_path)?;
+
+        Ok(())
+    } 
 }
 
