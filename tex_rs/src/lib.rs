@@ -28,10 +28,10 @@ pub struct Paper {
 
 impl Paper {
     /// constructor
-    pub fn new(cmd_ops: CmdOpt) -> Paper {
+    pub fn new(cmd_ops: &CmdOpt) -> Paper {
         Paper {
-            authour: cmd_ops.authour,
-            title: cmd_ops.title,
+            authour: cmd_ops.authour.clone(),
+            title: cmd_ops.title.clone(),
         }
     }
 }
