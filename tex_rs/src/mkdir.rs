@@ -1,4 +1,7 @@
 use std::fs;
+use std::fs::File;
+use std::io::{Write,Error};
+
 /// function to make directory structure
 /// 存在するディレクトリをmkdirしようとしたときのエラー処理がいまいち
 pub fn mkdir(path: &str) -> std::io::Result<()> {
@@ -97,3 +100,9 @@ mod tests_mkdirs {
     } 
 }
 
+/// write string to file 
+pub fn write_string(file_name:&str, file_contents:&str) -> Result<(),Error> {
+    let mut file = File::create(file_name).expect("file not found");
+    writeln!(file,"{}",file_contents)?;
+    Ok(())
+}
