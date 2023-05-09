@@ -126,4 +126,10 @@ let result = gen_latex_template(paper);
 
 assert_eq!(ans, result);
     }
+
+    #[test]
+    fn test_gen_makefile() {
+        let result = gen_makfile();
+        println!("{}", result);
+    }
 }
