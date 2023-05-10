@@ -2,7 +2,7 @@
 
 src="tex_rs"
 pkgname="tex_cli_rs"
-pkgver="1.0"
+pkgver="1.1"
 tarball_name="${pkgname}-${pkgver}"
 
 if [ ! -e "${tarball_name}" ];then
