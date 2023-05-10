@@ -83,7 +83,7 @@ ${f}.dvi : ${f}.tex
 		else \
 		echo -e "failure! please read ${f}.log"; \
 		fi
-	@(grep -q "Rerun to get" ${f}.log && platex -interaction=nonstopmode $< > /dev/null 2>&1); \
+	@((grep -q "Rerun to get" ${f}.log || [ -f ${f}.toc ]) && platex -interaction=nonstopmode $< > /dev/null 2>&1); \
 		if [ $$? -eq 0 ]; then \
 		echo "compile 2 is successed!"; \
 		fi
