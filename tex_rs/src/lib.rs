@@ -34,15 +34,14 @@ impl Paper {
             title: cmd_ops.title.clone(),
         }
     }
-}
 
-/// set author name and title to LaTex template from struct Paper
-pub fn gen_latex_template(paper: Paper) -> String {
-    let author = paper.authour;
-    let title = paper.title; 
+    /// set author name and title to LaTex template from struct Paper
+    pub fn gen_latex_template(&self) -> String {
+        let author = &self.authour;
+        let title = &self.title; 
 
-    format!(
-        r#"
+        format!(
+            r#"
 \documentclass[dvipdfmx]{{jsarticle}}
 
 % アンカーを作る
@@ -59,11 +58,11 @@ pub fn gen_latex_template(paper: Paper) -> String {
 %\tableofcontents
 %\clearpage
 \end{{document}}"#,title,author)
-}
+    }
 
-/// generate Makefile for build pdf document
-pub fn gen_makfile() -> String {
-    r#"
+    /// generate Makefile for build pdf document
+    pub fn gen_makfile() -> String {
+        r#"
 TEX = platex
 PDF = dvipdfmx
 f = main
@@ -96,7 +95,9 @@ clean:
 
 .PHONY : opn clean
         "#.to_string()
+    }
 }
+
 
 #[cfg(test)]
 mod tests {
@@ -122,14 +123,14 @@ mod tests {
 %\clearpage
 \end{document}"#.to_string();
 let paper = Paper{authour: "Jouji Handa".to_string(), title: "Card Shop".to_string()}; 
-let result = gen_latex_template(paper);
+let result = paper.gen_latex_template();
 
 assert_eq!(ans, result);
     }
 
     #[test]
     fn test_gen_makefile() {
-        let result = gen_makfile();
+        let result = Paper::gen_makfile();
         println!("{}", result);
     }
 }
