@@ -92,7 +92,7 @@ opn :
 	${viewer} ${f}.pdf &
 
 clean: 
-	rm *.aux *.dvi *.log *.pdf
+	rm *.aux *.dvi *.log *.pdf *.toc *.out
 
 .PHONY : opn clean
         "#.to_string()
