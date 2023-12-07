@@ -2,7 +2,7 @@
 
 src="tex_rs"
 pkgname="tex_cli_rs"
-pkgver="1.2"
+pkgver="1.2.2"
 arch="x86_64"
 tarball_name="${pkgname}-${pkgver}"
 pkgname="${tarball_name}-1-${arch}"

@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=tex_cli_rs
-pkgver=1.2
+pkgver=1.2.2
 pkgrel=1
 epoch=
 pkgdesc="Tool to make template of LaTex"
