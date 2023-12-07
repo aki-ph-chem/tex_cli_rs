@@ -22,6 +22,10 @@ fn main() -> Result<(),Error>{
     let papaer = tex_rs::Paper::new(&cmd_ops);
     tex_rs::mkdir::write_string(&format!("{}/{}",&cmd_ops.project.clone().unwrap(),"Makefile")
                                 ,&tex_rs::Paper::gen_makfile())?;
+
+    tex_rs::mkdir::write_string(&format!("{}/{}",&cmd_ops.project.clone().unwrap(),"build.sh")
+                                ,&tex_rs::Paper::gen_build_sh())?;
+
     tex_rs::mkdir::write_string(&format!("{}/{}",&cmd_ops.project.clone().unwrap(),"main.tex")
                                 ,&papaer.gen_latex_template())?;
 
